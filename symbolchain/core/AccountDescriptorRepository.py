@@ -24,7 +24,7 @@ class AccountDescriptorRepository:
 
     def __init__(self, yaml_input):
         """Loads account descriptors from the specified input."""
-        descriptors_yaml = yaml.load(yaml_input, Loader=yaml.SafeLoader)
+        descriptors_yaml = yaml.load(yaml_input, Loader=yaml.SafeLoader) or {}
         self.descriptors = [AccountDescriptor(descriptor_yaml) for descriptor_yaml in descriptors_yaml]
 
     def try_find_by_name(self, name):
