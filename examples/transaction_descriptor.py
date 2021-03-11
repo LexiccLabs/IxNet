@@ -10,7 +10,7 @@ def main():
     keyPair = KeyPair(PrivateKey(bytes(range(1, 33))))
 
     factory = TransactionFactory(facade.network)
-    transaction = factory.create_from_descriptor({
+    transaction = factory.create({
         'type': 'transfer',
         'signerPublicKey': keyPair.public_key.bytes,
         'recipientAddress': Address('NBQMNBY7Z3YTT2V7Y32CKSVQPJ3YDAD4RLQJEEI').bytes,

@@ -12,7 +12,7 @@ def main():
     keyPair = KeyPair(PrivateKey(unhexlify('11002233445566778899aabbccddeeff11002233445566778899aabbccddeeff')))
 
     factory = TransactionFactory(facade.network)
-    transaction = factory.create_from_descriptor({
+    transaction = factory.create({
         'type': 'transfer',
         'signerPublicKey': keyPair.public_key.bytes,
         'recipientAddress': unhexlify('6822a91a37c5c8e70f98f88ea76f8279e2f1f4679982b718'),
@@ -24,8 +24,8 @@ def main():
         ]
     })
 
-    signature = facade.sign_transaction(keyPair, transaction.serialize())
-    transaction.signature = signature.bytesc
+    signature = facade.sign_transaction(keyPair, transaction)
+    transaction.signature = signature.bytes
 
     print(hexlify(transaction.serialize()))
 
