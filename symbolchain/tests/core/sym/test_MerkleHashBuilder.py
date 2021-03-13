@@ -70,7 +70,7 @@ class MerkleHashBuilderTest(unittest.TestCase):
     def test_changing_sub_hash_changes_merkle_hash(self):
         # Arrange:
         seed_hashes1 = [NemTestUtils.randbytes(32) for _ in range(0, 8)]
-        seed_hashes2 = [seed_hashes1[i] if i > 0 else NemTestUtils.randbytes(32) for i in [0, 1, 2, 3, -1, 5, 6, 7]]
+        seed_hashes2 = [seed_hashes1[i] if 0 <= i else NemTestUtils.randbytes(32) for i in [0, 1, 2, 3, -1, 5, 6, 7]]
 
         # Sanity:
         self.assertEqual(len(seed_hashes1), len(seed_hashes2))
