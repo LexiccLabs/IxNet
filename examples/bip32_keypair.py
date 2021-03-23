@@ -1,6 +1,7 @@
 from symbolchain.core.Bip32 import Bip32
 from symbolchain.core.facade.SymFacade import SymFacade
 
+
 def main():
     facade = SymFacade('public_test')
 
@@ -14,6 +15,7 @@ def main():
     print(' *  public key: {}'.format(keyPair.public_key))
     address = facade.network.public_key_to_address(keyPair.public_key)
     print(' *     address: {}'.format(address))
+
 
 if __name__ == '__main__':
     main()
