@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+
+#
+# Shows how to create transaction manually using TransactionFactory.
+#
+
 from binascii import unhexlify
 from symbolchain.core.CryptoTypes import PrivateKey
 from symbolchain.core.sym.KeyPair import KeyPair
