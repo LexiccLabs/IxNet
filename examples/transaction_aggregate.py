@@ -9,20 +9,19 @@
 import argparse
 from binascii import hexlify, unhexlify
 from pathlib import Path
+
+import sha3
+from symbol_catbuffer.EmbeddedTransactionBuilderFactory import EmbeddedTransactionBuilderFactory
+from symbol_catbuffer.NetworkTypeDto import NetworkTypeDto
+from symbol_catbuffer.TransactionBuilderFactory import AggregateCompleteTransactionBuilder
+
 from symbolchain.core.AccountDescriptorRepository import AccountDescriptorRepository
 from symbolchain.core.CryptoTypes import Hash256, PrivateKey
+from symbolchain.core.facade.SymFacade import SymFacade
 from symbolchain.core.sym.KeyPair import KeyPair
 from symbolchain.core.sym.MerkleHashBuilder import MerkleHashBuilder
 from symbolchain.core.sym.Network import Address
-from symbolchain.core.facade.SymFacade import SymFacade
-
 from symbolchain.core.sym.TransactionFactory import TransactionFactory
-
-from symbol_catbuffer.NetworkTypeDto import NetworkTypeDto
-from symbol_catbuffer.EmbeddedTransactionBuilderFactory import EmbeddedTransactionBuilderFactory
-from symbol_catbuffer.TransactionBuilderFactory import AggregateCompleteTransactionBuilder
-
-import sha3
 
 
 def read_private_key(private_filename):
@@ -76,6 +75,7 @@ def main():
     print(aggregate)
     with open('transaction.bin', 'wb') as outFile:
         outFile.write(aggregate.serialize())
+
 
 if __name__ == '__main__':
     main()
